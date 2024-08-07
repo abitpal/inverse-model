@@ -6,7 +6,7 @@ import Plot from 'react-plotly.js';
 
 function App() {
 
-  const URL = "http://0.0.0.0:8000"
+  const URL = "https://inverse-model-backend.onrender.com"
 
   //states
   const [BackgroundTextColor, SetBackgroundTextColor] = useState("rgb(255, 255, 221, 0.1)"); 
@@ -201,7 +201,7 @@ function App() {
     if (!Paused){
       interval = setInterval(()=>{
         if (LoadingCount < 100) setLoadingCount(c => c + 1); 
-      }, 80); 
+      }, 120); 
     }
     else{
       clearInterval(interval); 
