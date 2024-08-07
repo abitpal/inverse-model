@@ -138,7 +138,7 @@ function App() {
 
     })
 
-    setTimeout(fetchLayerCorrection, 1000)
+    fetchLayerCorrection(); 
 
 
   }
