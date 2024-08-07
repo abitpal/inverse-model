@@ -1,38 +1,240 @@
 .App {
+  font-family: Fontsfree Net Maison Neue Mono, sans-serif;
+}
+
+@font-face {
+  font-family: Fontsfree Net Maison Neue Mono;
+  src: url(../public/Fonts/FontsFree-Net-Maison-Neue-Mono.ttf);
+}
+
+
+.ModelInputFileDiv {
+
+  position: absolute;
+
   text-align: center;
+
+  width: 50%;
+  margin-left: 25%; 
+
+  height: 25%;
+
+  top: 50%;
+  transform: translate(0, -50%);
+
+  color: #6382e7;
+  font-weight: 800;
+
+  font-size: 1vw;
+  transition-duration: 0.3s; 
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+
+.ModelInputFileDiv:hover{
+  cursor: pointer;
+
+  opacity: 0.7;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.ModelInputFileDiv div{
+  text-align: center;
+  top: 50%;
+  transform: translate(0, -50%);
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.MainBackground {
+
+  position: absolute;
+  font-size: 3vw;
+  font-weight: 600;
+  color: #ff121277;
+
+  width: 100vw;
+  height: 100vh;
+  
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  text-align: left;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+
+
+  /* transition-duration: 0.5s; */
+
+
+}
+
+.MainBackground div{
+  width: 130vw;
+  height: 130vh;
+}
+
+.ModelInputFileInput{
+  display: none;
+}
+
+.Layer{
+  background-color: #486ba4;
+  opacity: 1;
+  width: 100vw;
+  height: 100vh;
+  font-family: Fontsfree Net Maison Neue Mono, sans-serif;
+  position: absolute; 
+  left: 0;
+  top: 0;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.LayerTextInput {
+  position: absolute;
+
+  text-align: center;
+
+  width: 50%;
+  margin-left: 25%; 
+
+  top: 50%;
+  transform: translate(0, -50%);
+
+  color: rgb(255, 97, 97);
+  font-weight: 800;
+
+  font-size: 1.5vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.LayerTextInput input {
+  border: none;
+  border-top: 1px solid white;;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  color: white;
+  font-family: Fontsfree Net Maison Neue Mono, sans-serif;
+  padding: 12px;
+  font-weight: 600;
+  text-align: center;
+  font-size: .7vw;
+  width: 50%;
 }
+
+.LayerTextInput input:focus{
+  outline: none;
+}
+
+.LayerTextInput input::placeholder {
+  color: white;
+  opacity: 0.5; /* Firefox */
+}
+
+.LayerTextInput::-ms-input-placeholder { /* Edge 12 -18 */
+  color: white;
+  opacity: 0.5;
+}
+
+.LayerTextInput button{
+  background-color: transparent;
+  border: none;
+  font-family: Fontsfree Net Maison Neue Mono, sans-serif;
+  color: white;
+  padding-left: 0.5vw;
+}
+
+.LayerTextInput button:hover{
+  cursor: pointer;
+  opacity: 0.5;
+  transition-duration: 0.3s; 
+}
+
+
+.LayerDescription{
+  font-weight: 600;
+
+  color: #486ba4;
+  background-color: white;
+
+  padding: 10px;
+
+  font-size: 0.8vw;
+
+  text-align: center;
+
+  overflow-x: hidden;
+
+
+
+}
+
+
+.Model{
+
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+  font-family: Fontsfree Net Maison Neue Mono, sans-serif;
+  position: absolute; 
+
+  font-weight: 1000;
+  opacity: 0.8;
+
+  background-color: #428541;
+  background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+}
+
+
+
+.Graph {
+  position: absolute;
+  opacity: 0.5;
+  left: 0;
+  z-index: 0;
+  color: "#428541"; 
+
+}
+
+.ModelLayerTitle{
+  opacity: 0.6;
+  font-size: 2vw;
+  background-color: transparent;
+  padding-left: 20px;
+  padding-top: 20px;
+  z-index: 2; 
+  position: absolute;
+}
+
+.DataInput {
+  text-align: center;
+  top: 50%;
+
+  color: rgb(255, 185, 86);
+  font-weight: 1000;
+  font-size: 1.2vw;
+
+  transform: translate(0, -50%);
+  position: relative;
+
+  transition-duration: 1s;
+}
+
+.DataInput input{
+  display: none;
+}
+
+.DataInput:hover{
+  cursor: pointer;
+  opacity: 0.7;
+
+
+}
+
