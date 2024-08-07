@@ -114,7 +114,7 @@ function App() {
 
     //fetch for layer
     
-    const fetchLayerCorrection = () => fetch(URL + "/models/layers/", {
+    const fetchLayerCorrection = () => fetch(URL + "/models/layers", {
       mode: 'cors',
       method: "POST",
       body: formData,
@@ -174,7 +174,7 @@ function App() {
     }
 
 
-    const fetchLayerCorrection = () => fetch(URL + "/models/graph/", {
+    const fetchLayerCorrection = () => fetch(URL + "/models/graph", {
       mode: 'cors',
       method: "POST",
       body: formData,
