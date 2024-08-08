@@ -6,7 +6,8 @@ import Plot from 'react-plotly.js';
 
 function App() {
 
-  const URL = "https://inverse-model-backend.onrender.com"
+  // const URL = "https://inverse-model-backend.onrender.com"
+  const URL = "http://127.0.0.1:8000"
 
   //states
   const [BackgroundTextColor, SetBackgroundTextColor] = useState("rgb(255, 255, 225, 0.15)"); 
@@ -31,6 +32,7 @@ function App() {
   const LayerTextInputRef = useRef(null); 
   const ModelInputFile = useRef(null); 
   const DataInputFile = useRef(null); 
+  const ColorInputFile = useRef(null); 
 
   //tab management
   var TabDisplayMock = {
@@ -164,23 +166,7 @@ function App() {
     var formData = new FormData(); 
     formData.append("model", ModelInputFile.current.files[0])
     formData.append("layer", LayerTextInputRef.current.value)
-
-    console.log(DataInputFile.current.files)
-
-    if (DataInputFile.current.files.length > 1){
-      for (var i = 0; i < DataInputFile.current.files.length; i++){
-        if (DataInputFile.current.files[i].name == "colors.npy"){
-          formData.append("color", DataInputFile.current.files[i]); 
-          console.log("has color!")
-        }
-        else{
-          formData.append("data", DataInputFile.current.files[i])
-        }
-      }
-    }
-    else{
-      formData.append("data", DataInputFile.current.files[0])
-    }
+    formData.append("data", DataInputFile.current.files[0])
 
 
     const fetchLayerCorrection = () => fetch(URL + "/models/graph", {
@@ -191,17 +177,42 @@ function App() {
     .then(res => res.json())
     .then((res) => {
       console.log(res.x);
-      SetPaused(true); 
+      SetPaused(true);
       switchScreen("model_graph", "white");
       SetX(res.x)
       SetY(res.y)
       SetZ(res.z)
-      if (res.hasColor){
-        SetC(res.color); 
-      }
     })
 
     fetchLayerCorrection(); 
+
+  }
+
+
+
+  const ColorButtonClick = () => {
+    ColorInputFile.current.click()
+  }
+
+  const GetColors = () => {
+    const colorFile = ColorInputFile.current.files[0]
+
+    var formData = new FormData(); 
+    
+    formData.append("color", colorFile); 
+
+    const fetchColors = () => fetch(URL + "/models/color", {
+      mode: 'cors',
+      method: "POST",
+      body: formData,
+    })
+    .then(res => res.json())
+    .then((res) => {
+      SetC(res.color); 
+    })
+
+    fetchColors(); 
+
 
   }
 
@@ -252,21 +263,23 @@ function App() {
         <div className="LayerDescription">
           <a>{"INPUT THE NAME OF YOUR TARGET LAYER HERE. YOU CAN CHECK THE NAME OF YOUR TARGET LAYER BY RUNNING MODEL.SUMMARY OR LAYER.NAME".repeat(1)}</a>
         </div>
-
-
       </div>
 
 
       <div className="Model" style={{display: TabDisplay["model"]}}>
         <div className="ModelLayerTitle">{TargetLayer.toUpperCase()}</div>
+        <div className="ColorInput" onClick={ColorButtonClick}>
+          <div>CHANGE COLORS</div>
+          <input type="file" style={{display: "none"}} ref={ColorInputFile} accept=".npy" onChange={GetColors}></input>
+        </div>
         <div className="DataInput" style={{display: TabDisplay["model_data_input"]}}>
-          <div onClick={OpenDataInput}>LOAD YOUR MODEL DATA IN THE FORM OF .NPY FILE<br/>YOU CAN ALSO LOAD COLORS.NPY TO COLOR YOUR SCATTERS.</div>
-          <input type="file" ref={DataInputFile} accept=".npy" multiple="multiple" onChange={GenerateGraph}></input>
+          <div onClick={OpenDataInput}>LOAD YOUR MODEL DATA IN THE FORM OF .NPY FILE<br/>CREATE A .NPY FILE WITH NUMPY.SAVE()</div>
+          <input type="file" ref={DataInputFile} accept=".npy" onChange={GenerateGraph}></input>
         </div>
         <div style={{display: TabDisplay["model_graph"]}}>
           <Graph x={X} y={Y} z={Z} color={C}/>
-
         </div>
+
         
       </div>
     </div>
@@ -315,7 +328,7 @@ const Graph = ({x, y, z, color="#428541"}) => {
           mode: 'markers',
           marker: {
             color: color,
-            opacity: 0.8,
+            opacity: 1,
           },
         },
         

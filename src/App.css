@@ -209,8 +209,8 @@
   opacity: 0.6;
   font-size: 2vw;
   background-color: transparent;
-  padding-left: 20px;
-  padding-top: 20px;
+  padding-left: 2vw;
+  padding-top: 2vh;
   z-index: 2; 
   position: absolute;
   color: #606676;
@@ -241,3 +241,30 @@
 
 }
 
+
+.ColorInput div {
+
+  z-index: 100;
+  position: absolute;
+  color: #606676; 
+  font-weight: 1000;
+
+  bottom: 2vh;
+  right: 2vw;
+
+  font-size: 1vw;
+
+  transition-duration: 0.8s;
+
+
+}
+
+
+
+.ColorInput div:hover {
+
+  opacity: 0.5;
+  cursor: pointer;
+
+
+}
