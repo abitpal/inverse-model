@@ -9,7 +9,7 @@ function App() {
   const URL = "https://inverse-model-backend.onrender.com"
 
   //states
-  const [BackgroundTextColor, SetBackgroundTextColor] = useState("rgb(255, 255, 221, 0.1)"); 
+  const [BackgroundTextColor, SetBackgroundTextColor] = useState("rgb(255, 255, 225, 0.15)"); 
   const [BackgroundColor, SetBackgroundColor] = useState("#fcb57b"); 
   const [ModelInputFileDivDisplay, SetModelInputFileDiv] = useState("block")
   const[BackgroundText, SetBackgroundText] = useState("INVERSE MODEL IS A WEB APPLICATION THAT USES DIMENSIONAL REDUCTION TECHNIQUES TO VISUALIZE HOW INPUT DATA IS TRANSFORMED IN HIDDEN LAYERS.")
@@ -45,7 +45,7 @@ function App() {
 
   //functions
   //manage tabs
-  const switchScreen = (tab) => {
+  const switchScreen = (tab, backgroundcolor) => {
     console.log("Switching")
     for (var tabs in TabDisplay){
       TabDisplayMock[tabs] = "none"; 
@@ -56,16 +56,26 @@ function App() {
     }
 
     SetTabDisplay({...TabDisplayMock}); 
+    SetBackgroundColor(backgroundcolor);
+    SetBackgroundTextColor("rgb(255, 255, 225, 0.1)"); 
+    setLoadingCount(0); 
+    if (tab == "layer"){
+      SetBackgroundText("SELECT YOUR LAYER. THE OUTPUT VALUE OF THIS LAYER WILL BE PROJECTED. ")
+      SetBackgroundTextColor("rgb(255, 255, 225, 0.05)"); 
+    }
+    if (tab == "model_data_input"){
+      SetBackgroundText("INPUT YOUR DATA. THIS IS THE INPUT DATA TO YOUR MODEL. ")
+      SetBackgroundTextColor("rgb(255, 255, 225, 0.1)"); 
+    }
 
   }
 
   //turn on loading screen
   const OnLoading = () =>{
     SetPaused(false); 
-    switchScreen("intro");
+    switchScreen("intro", "rgb(254, 247, 243)");
 
     SetBackgroundTextColor("rgb(231, 225, 221)"); 
-    SetBackgroundColor("rgb(254, 247, 243)")
     setLoadingCount(0);
 
 
@@ -74,10 +84,9 @@ function App() {
   }
 
   const ErrorScreen = () =>{
-    switchScreen("intro");
+    switchScreen("intro", "white");
 
     SetBackgroundTextColor("rgb(0, 0, 0)"); 
-    SetBackgroundColor("white")
     setLoadingCount(0);
 
     SetBackgroundText("ERROR: LAYER NOT FOUND. TRANSPORTING BACK IN 3 SECONDS")
@@ -97,7 +106,7 @@ function App() {
     const file = event.target.files[0]; 
     console.log(file);
     
-    switchScreen("layer"); 
+    switchScreen("layer", "#405D72"); 
 
   };
 
@@ -126,13 +135,13 @@ function App() {
 
       if (layer_found == false){
         ErrorScreen(); 
-        setTimeout(() => switchScreen("layer"), 2000); 
+        setTimeout(() => switchScreen("layer", "#405D72"), 2000); 
       }
       else{
         clearInterval(interval);
         SetTargetLayer(layer); 
-        SetPaused(true); 
-        switchScreen("model_data_input");
+        setLoadingCount(0); 
+        switchScreen("model_data_input", "#729762");
       }
       
 
@@ -183,7 +192,7 @@ function App() {
     .then((res) => {
       console.log(res.x);
       SetPaused(true); 
-      switchScreen("model_graph");
+      switchScreen("model_graph", "white");
       SetX(res.x)
       SetY(res.y)
       SetZ(res.z)
@@ -194,14 +203,13 @@ function App() {
 
     fetchLayerCorrection(); 
 
-
   }
 
   useEffect(()=>{
     if (!Paused){
       interval = setInterval(()=>{
         if (LoadingCount < 100) setLoadingCount(c => c + 1); 
-      }, 120); 
+      }, 80); 
     }
     else{
       clearInterval(interval); 
@@ -222,12 +230,10 @@ function App() {
 
   return (
     <div className="App">
+      <div className="MainBackground" style={{color: BackgroundTextColor, backgroundColor: BackgroundColor}}>
+        <div>{BackgroundText.repeat(LoadingCount)}</div>
+      </div>
       <div className="Intro" style={{display: TabDisplay["intro"]}}>
-
-
-        <div className="MainBackground" style={{color: BackgroundTextColor, backgroundColor: BackgroundColor}}>
-          <div>{BackgroundText.repeat(LoadingCount)}</div>
-        </div>
         <div className="ModelInputFileDiv" onClick={ModelInputFileOnClick} style={{display: ModelInputFileDivDisplay}}>
           <div>UPLOAD MODEL.KERAS</div>
         </div>
@@ -244,7 +250,7 @@ function App() {
           <button onClick={LayerButtonClick}>SEND</button>
         </div>
         <div className="LayerDescription">
-          <a>INPUT THE NAME OF YOUR TARGET LAYER HERE. YOU CAN CHECK THE NAME OF YOUR TARGET LAYER BY RUNNING MODEL.SUMMARY OR LAYER.NAME</a>
+          <a>{"INPUT THE NAME OF YOUR TARGET LAYER HERE. YOU CAN CHECK THE NAME OF YOUR TARGET LAYER BY RUNNING MODEL.SUMMARY OR LAYER.NAME".repeat(1)}</a>
         </div>
 
 
@@ -254,7 +260,7 @@ function App() {
       <div className="Model" style={{display: TabDisplay["model"]}}>
         <div className="ModelLayerTitle">{TargetLayer.toUpperCase()}</div>
         <div className="DataInput" style={{display: TabDisplay["model_data_input"]}}>
-          <div onClick={OpenDataInput}>LOAD A .NPY FILE: INPUT TO YOUR MODEL</div>
+          <div onClick={OpenDataInput}>LOAD YOUR MODEL DATA IN THE FORM OF .NPY FILE<br/>YOU CAN ALSO LOAD COLORS.NPY TO COLOR YOUR SCATTERS.</div>
           <input type="file" ref={DataInputFile} accept=".npy" multiple="multiple" onChange={GenerateGraph}></input>
         </div>
         <div style={{display: TabDisplay["model_graph"]}}>
