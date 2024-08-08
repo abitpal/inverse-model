@@ -6,8 +6,7 @@ import Plot from 'react-plotly.js';
 
 function App() {
 
-  // const URL = "https://inverse-model-backend.onrender.com"
-  const URL = "http://127.0.0.1:8000"
+  const URL = "https://inverse-model-backend.onrender.com"
 
   //states
   const [BackgroundTextColor, SetBackgroundTextColor] = useState("rgb(255, 255, 225, 0.15)"); 
