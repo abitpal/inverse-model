@@ -266,7 +266,7 @@ function App() {
 
 
       <div className="Model" style={{display: TabDisplay["model"]}}>
-        <div className="ModelLayerTitle" style={{display: TabDisplay["model_data_input"]}}>{TargetLayer.toUpperCase()}</div>
+        <div className="ModelLayerTitle" style={{display: TabDisplay["model_graph"]}}>{TargetLayer.toUpperCase()}</div>
         <div className="ColorInput" onClick={ColorButtonClick}>
           <div>CHANGE COLORS</div>
           <input type="file" style={{display: "none"}} ref={ColorInputFile} accept=".npy" onChange={GetColors}></input>
