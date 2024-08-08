@@ -30,8 +30,6 @@
 
 }
 
-
-
 .ModelInputFileDiv:hover{
   cursor: pointer;
 
@@ -121,11 +119,11 @@
   background-color: #405d726f;
   color: #F7E7DC;
   font-family: Fontsfree Net Maison Neue Mono, sans-serif;
-  padding: 12px;
   font-weight: 600;
   text-align: center;
   font-size: .7vw;
   width: 50%;
+  padding: 1.5vw;
 }
 
 .LayerTextInput input:focus{
@@ -147,7 +145,9 @@
   border: none;
   font-family: Fontsfree Net Maison Neue Mono, sans-serif;
   color: #F7E7DC;
-  padding-left: 0.5vw;
+  padding: 1.5vw; 
+  font-size: .7vw;
+  
 }
 
 .LayerTextInput button:hover{
@@ -166,9 +166,9 @@
   color: #405D72;
   background-color: #F7E7DC;
 
-  padding: 10px;
+  padding: 2vh;
 
-  font-size: 0.8vw;
+  font-size: 0.7vw;
 
   text-align: center;
 
@@ -265,6 +265,97 @@
 
   opacity: 0.5;
   cursor: pointer;
+
+
+}
+
+
+
+/* 
+Responsive Design
+*/
+
+
+@media (max-width: 1300px) {
+  .ModelInputFileDiv .DataInput{
+      font-size: 1.5vw; 
+  }
+
+  
+  .LayerTextInput input {
+    font-size: 1vw;
+    width: 70%;
+  }
+  .LayerTextInput button {
+    font-size: 1vw;
+  }
+
+  .LayerDescription {
+    font-size: 1vw;
+  }
+
+  .ColorInput div{
+    font-size: 2vw;
+  }
+
+
+}
+
+
+@media (max-width: 650px) {
+  .ModelInputFileDiv{
+      font-size: 2vw; 
+  }
+  .LayerTextInput {
+    width: 80%;
+    margin-left: 10%;
+  }
+  .LayerTextInput input {
+    font-size: 1.5vw;
+    padding: 4vh;
+  }
+  .LayerTextInput button {
+    font-size: 2vw;
+    padding: 4vh; 
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+  .LayerDescription {
+    display: none;
+  }
+
+  .DataInput{
+    font-size: 2.4vw;
+  }
+
+  .ColorInput div{
+    font-size: 2.3vw;
+  }
+
+
+}
+
+
+@media (max-width: 350px) {
+  .ModelInputFileDiv{
+      font-size: 10px; 
+  }
+
+  .LayerTextInput input {
+    font-size: 2vw;
+    width: 80%;
+    padding: 4vh;
+  }
+  .LayerTextInput button {
+    font-size: 4vw;
+    padding: 4vh; 
+
+  }
+
+  .DataInput{
+    font-size: 2.8vw;
+  }
 
 
 }
