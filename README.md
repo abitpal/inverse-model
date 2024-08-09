@@ -6,7 +6,9 @@ Welcome to Inverse Model, a web app that lets you visualize how the first _x_ hi
 
 
 ## Instructions
-When you enter the site, the first thing it should say is "upload model.keras" - let's start with what to do there. 
+When you enter the site, the first thing it should say is "upload model.keras" - let's start with what to do there.
+
+Here's a demo video: ![Demo Video](public/Demo/Demo.mov)
 
 ### _"upload model.keras"_
 
@@ -29,6 +31,11 @@ When you enter the site, the first thing it should say is "upload model.keras" -
 - Click on the centered title and upload this .npy file
 - This process may take a while
 
-  
+### _"change your colors"_
 
-  
+- Once your graph pops up, you can click on the "change color" button in the bottom right corner to change the colors
+- The color should also be a .npy file, where each element is a string corresponding do the colors of each point
+- Example: color_array = np.array(["rgb(20, 20, 0)", "rgb(20, 20, 100)", "rgb(20, 20, 200)"]) 
+- We feed these right into marker.color in plotly.js so make sure to verify that your color format is compatible!
+    - We recommend using hex values: "#xxxxx" or rgb: "rgb(20, 20, 20)"
+
