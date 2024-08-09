@@ -8,7 +8,7 @@ Welcome to Inverse Model, a web app that lets you visualize how the first _x_ hi
 ## Instructions
 When you enter the site, the first thing it should say is "upload model.keras" - let's start with what to do there.
 
-Here's a demo video: ![Demo Video](public/Demo/Demo.mov)
+If you're looking for a video tutorial, a demo video is right [here.](https://youtu.be/C9WyWbtjpD8)
 
 ### _"upload model.keras"_
 
