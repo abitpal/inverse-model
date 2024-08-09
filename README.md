@@ -1,5 +1,2 @@
-# Inverse Model
-[Link](https://github.com/facebook/create-react-app).
-
-## Available Scripts
+# [Inverse Model](https://inverse-model.vercel.app/)
 
