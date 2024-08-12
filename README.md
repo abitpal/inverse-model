@@ -39,3 +39,7 @@ If you're looking for a video tutorial, a short demo video is right [here.](http
 - We feed these right into marker.color in plotly.js so make sure to verify that your color format is compatible!
     - We recommend using hex values: "#xxxxx" or rgb: "rgb(20, 20, 20)"
 
+## Framework
+
+**Front-end:** React JS <br/>
+**Back-end:** Django (Python) with Tensorflow, Numpy, and Scikit-Learn for model & data computations
