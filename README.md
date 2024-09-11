@@ -1,6 +1,6 @@
 # [Inverse Model](https://inverse-model.vercel.app/)
 
-Welcome to Inverse Model, a web app that lets you visualize how the first _x_ hidden layers of the model interprets the data 
+Welcome to [Inverse Model](https://inverse-model.vercel.app/), a web app that lets you visualize how the first _x_ hidden layers of the model interprets the data 
 
 **_To Put It Not-Simply_**: this web app uses dimensional reduction technique (tSNE & PCA) to visualize how a model is interpreting the data up to a certain hidden layer. 
 
