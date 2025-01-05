@@ -8,7 +8,7 @@ Welcome to [Inverse Model](https://inverse-model.vercel.app/), a web app that le
 ## Instructions
 When you enter the site, the first thing it should say is "upload model.keras" - let's start with what to do there.
 
-If you're looking for a video tutorial, a short demo video is right [here.](https://youtu.be/C9WyWbtjpD8)
+If you're looking for a video tutorial, a **short demo video** is right [here.](https://youtu.be/C9WyWbtjpD8)
 
 ### _"upload model.keras"_
 
